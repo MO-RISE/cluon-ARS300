@@ -1,0 +1,3 @@
+[submodule "opendlv.standard.message-set"]
+	path = opendlv.standard.message-set
+	url = https://github.com/chalmers-revere/opendlv.standard-message-set.git
