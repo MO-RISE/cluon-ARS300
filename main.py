@@ -52,7 +52,7 @@ def can_message_handler_1(_):
     
     msg_id1 = 1133
     msg1 = opendlv.logic.perception.ObjectDirection()
-    msg1.objectId = msg0.objectIdmsg0.objectId
+    msg1.objectId = msg0.objectId
     msg1.azimuthAngle = target.get('Tar_Ang')
     
     msg_id2 = 1134
