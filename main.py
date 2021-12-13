@@ -76,7 +76,7 @@ if __name__ == "__main__":
     bus = can.interface.Bus(bustype=CANBUSTYPE, channel=CANBUS_CHANNEL, bitrate=500000)
     ## load databases
     db = cantools.database.Database()
-    db.add_dbc_file(THIS_DIR+'\Configs for ARS 308-2C and 308-21\\can_database_ch0.dbc') # does this work?
+    db.add_dbc_file(THIS_DIR+'can_database_ch0.dbc') # does this work?
     # db.add_dbc_file(os.getcwd()+'\Configs for ARS 308-2C and 308-21\\can_database_ch0.dbc')
    
     CAN1_Target_Status = db.get_message_by_name('CAN1_Target_Status')
