@@ -22,6 +22,22 @@ For each target, the following data values will be sent
  | Tar_Ang | [deg] | Target angle | 
  | Tar_RCSValue | [dBm2] | Radar cross section | 
 
+## Production setup
+```yaml
+version: '3'
+services:
+  ars300-radar:
+    image: ghcr.io/mo-rise/cluon-ARS300
+    restart: unless-stopped
+    network_mode: "host"
+    environment:
+      - CLUON_CID=121
+      - CANBUS_CHANNEL=0
+      - CANBUS_TYPE=kvaser
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+```
+
 ## Development setup
 To setup the development environment:
 
