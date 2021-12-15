@@ -28,8 +28,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/mo-rise/cluon-ARS300:latest
-            ghcr.io/mo-rise/cluon-ARS300:${{ github.event.release.tag_name }}
+            ghcr.io/mo-rise/cluon-ars300:latest
+            ghcr.io/mo-rise/cluon-ars300:${{ github.event.release.tag_name }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

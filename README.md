@@ -27,7 +27,7 @@ For each target, the following data values will be sent
 version: '3'
 services:
   ars300-radar:
-    image: ghcr.io/mo-rise/cluon-ARS300
+    image: ghcr.io/mo-rise/cluon-ars300
     restart: unless-stopped
     network_mode: "host"
     environment:
