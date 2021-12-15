@@ -1,8 +1,10 @@
 import time
-from pycluon import OD4Session
-from pycluon.importer import import_odvd
+import json
+from datetime import datetime
 
-from main import cluon_send, opendlv
+from pycluon import OD4Session
+
+from main import cluon_send, memo
 
 
 def test_sender():
@@ -16,19 +18,17 @@ def test_sender():
         called = True
         received_envelope = envelope
 
-    session.add_data_trigger(1134, callback)
+    session.add_data_trigger(10004, callback)
 
-    msg = opendlv.opendlv_logic_perception_ObjectDistance()
-    msg.objectId = 42
-    msg.distance = 78.5
+    msg = memo.memo_raw_Brefv()
+    msg.data = json.dumps({"test": "value"})
 
-    cluon_send([(1134, 3, msg)])
+    cluon_send([(10004, datetime.fromtimestamp(3), msg)])
 
     time.sleep(0.01)
 
     assert called
-    received_message = opendlv.opendlv_logic_perception_ObjectDistance()
+    received_message = memo.memo_raw_Brefv()
     received_message.ParseFromString(received_envelope.serialized_data)
-    assert received_envelope.sampled == 3
-    assert received_message.objectId == 42
-    assert received_message.distance == 78.5
+    assert received_envelope.sampled_at == datetime.fromtimestamp(3)
+    assert json.loads(received_message.data) == {"test": "value"}
