@@ -121,8 +121,8 @@ def frame_handler(frame: Dict):
     sample_time = datetime.fromtimestamp(frame.get("timestamp"))
 
     # Insert into a memo.raw.Brefv message
-    msg_id = 10004  # Acording to odvd-file
-    msg = memo.memo_raw_Brefv()
+    msg_id = 10000  # Acording to odvd-file
+    msg = memo.memo_raw_Raw()
     msg.data = json.dumps(frame)
 
     return [(msg_id, sample_time, msg)]

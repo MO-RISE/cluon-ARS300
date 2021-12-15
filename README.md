@@ -1,6 +1,26 @@
 # cluon-ARS300
 
-Microservice for reading data from an ARS-300 radar module over CAN and sending objects and targets to a cluon multicast group using pycluon
+Microservice for reading data from an ARS-300 radar module over CAN and sending frames (list of targets) to a cluon multicast group using pycluon
+
+## Data description
+
+For each target, the following data values will be sent
+
+ | Signal | [unit] | description | 
+ | --- | --- | --- | 
+ | sample_time | [s] | time since epoch in  (according to computer running micro service) | 
+ | Tar_Dist_rms | [m] | Target range standard deviation | 
+ | Tar_Ang_rms | [deg] | Target angle standard deviation | 
+ | Tar_Vrel_rms | [m/s] | Target relative velocity standard deviation (to/from radar) | 
+ | Tar_Vrel | [m/s] | Target relative velocity (to/from radar; positive likely towards radar, negative away from) | 
+ | Tar_Dist | [m] | Target range | 
+ | Tar_PdH0 | [%] | Target false alarm probability | 
+ | Tar_Length | [m] | Target length (likely range direction) | 
+ | Tar_Width | [m] | Target width (likely azimuth direction) | 
+ | Tar_Type | [N/A] | Target type -  0:No target, 1:Oncoming, 2:Stationary, 3:Traced (targets moving in the same direction) | 
+ | Tar_Ang_stat | [N/A] | Target angle status - 0:Expanded target, 1:Point target, 2:Digital, 3:Invalid (should be ignored, because it is invalid) | 
+ | Tar_Ang | [deg] | Target angle | 
+ | Tar_RCSValue | [dBm2] | Radar cross section | 
 
 ## Development setup
 To setup the development environment:
