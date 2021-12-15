@@ -19,4 +19,4 @@ To run the linters:
 
 To run the tests:
 
-    pytest --verbose tests
+    python -m pytest --verbose tests
