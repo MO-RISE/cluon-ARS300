@@ -151,9 +151,7 @@ if __name__ == "__main__":
 
     # Open can bus. Make sure it is the right channel!
     channel = int(CANBUS_CHANNEL) if CANBUS_TYPE in ("kvaser",) else CANBUS_CHANNEL
-    can_bus = can.interface.Bus(
-        bustype=CANBUS_TYPE, channel=channel, bitrate=500000
-    )
+    can_bus = can.interface.Bus(bustype=CANBUS_TYPE, channel=channel, bitrate=500000)
 
     # Start processing messages
     receive_from_canbus(can_bus, source.emit)
