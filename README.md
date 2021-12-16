@@ -32,11 +32,13 @@ services:
     network_mode: "host"
     environment:
       - CLUON_CID=121
-      - CANBUS_CHANNEL=0
-      - CANBUS_TYPE=kvaser
+      - CANBUS_CHANNEL=can0
+      - CANBUS_TYPE=socketcan
     devices:
       - "/dev/ttyUSB0:/dev/ttyUSB0"
 ```
+
+Note: On `socketcan`, the can interface must be "enabled" by issuing the following command: `ip link set can0 up`
 
 ## Development setup
 To setup the development environment:

@@ -21,8 +21,8 @@ env = Env()
 CLUON_CID = env.int("CLUON_CID", 111)
 CLUON_SENDER_ID = env.int("CLUON_SENDER_ID", 1)
 LOG_LEVEL = env.log_level("LOG_LEVEL", logging.WARNING)
-CANBUS_CHANNEL = env.int("CANBUS_CHANNEL", 0)
-CANBUSTYPE = env("CANBUSTYPE", "kvaser")
+CANBUS_CHANNEL = env("CANBUS_CHANNEL")
+CANBUS_TYPE = env("CANBUS_TYPE")
 
 # Setup logger
 logging.basicConfig(level=LOG_LEVEL)
@@ -150,8 +150,9 @@ if __name__ == "__main__":
     source.map(frame_handler).sink(cluon_send)
 
     # Open can bus. Make sure it is the right channel!
+    channel = int(CANBUS_CHANNEL) if CANBUS_TYPE in ("kvaser",) else CANBUS_CHANNEL
     can_bus = can.interface.Bus(
-        bustype=CANBUSTYPE, channel=CANBUS_CHANNEL, bitrate=500000
+        bustype=CANBUS_TYPE, channel=channel, bitrate=500000
     )
 
     # Start processing messages
